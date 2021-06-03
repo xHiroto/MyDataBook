@@ -25,5 +25,6 @@
         android:text="C347 - Android programming II \n Republic Polytechnic"
         android:textSize="20dp"
         android:gravity="center_horizontal"
+
         android:textColor="@color/black"/>
 </LinearLayout>
