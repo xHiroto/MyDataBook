@@ -77,13 +77,13 @@ public class VaccinationFragment extends Fragment {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor prefEdit = pref.edit();
 
-        prefEdit.putString("textVaccine", text);
+        prefEdit.putString("textVac", text);
         prefEdit.commit();
     }
     public void onResume(){
         super.onResume();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String text = prefs.getString("textVaccine", "");
+        String text = prefs.getString("textVac", "");
         tvVaccination.setText(text);
     }
 }

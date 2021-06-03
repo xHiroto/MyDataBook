@@ -21,7 +21,7 @@ public class AboutUsActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         iv = findViewById(R.id.aboutUsImage);
         String imageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/80/Republic_Polytechnic_Logo.jpg";
-       Picasso.with(this).load(imageUrl).placeholder(R.drawable.ajax_loader).error(R.drawable.error).into(iv);
+        Picasso.with(this).load(imageUrl).placeholder(R.drawable.ajax_loader).error(R.drawable.error).into(iv);
 
 
 
