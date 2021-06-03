@@ -82,13 +82,13 @@ public class BioFragment extends Fragment {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor prefEdit = pref.edit();
 
-        prefEdit.putString("text", text);
+        prefEdit.putString("textBio", text);
         prefEdit.commit();
     }
     public void onResume(){
         super.onResume();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String text = prefs.getString("text", "");
+        String text = prefs.getString("textBio", "");
         tvBio.setText(text);
     }
 
