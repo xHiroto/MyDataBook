@@ -41,6 +41,10 @@ public class VaccinationFragment extends Fragment {
                 LinearLayout ll_alert_layout = new LinearLayout(getActivity());
                 ll_alert_layout.setOrientation(LinearLayout.VERTICAL);
                 final EditText ed_input = new EditText(getActivity());
+                
+                //Add the placeholder when the person wanna edit 
+                ed_input.setText(tvVaccination.getText().toString());
+                
                 ll_alert_layout.addView(ed_input);
 
                 myBuilder.setTitle("Edit Vaccination");
@@ -70,6 +74,7 @@ public class VaccinationFragment extends Fragment {
         });
         return view;
     }
+
 
     public void onPause(){
         super.onPause();
