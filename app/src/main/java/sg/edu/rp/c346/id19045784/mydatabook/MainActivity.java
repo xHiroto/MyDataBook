@@ -17,12 +17,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
-    private String[] drawerItems;
+    ArrayList<Drawer> drawerItems;
     private DrawerLayout drawerLayout;
     private ListView drawerList;
-    ArrayAdapter<String> aa;
+    DrawerAdapter aa;
     String currentTitle;
     ActionBar ab;
     private ActionBarDrawerToggle drawerToggle;
@@ -37,11 +39,14 @@ public class MainActivity extends AppCompatActivity {
         drawerList = findViewById(R.id.left_drawer);
         tvAbout = findViewById(R.id.tvAbout);
 
-        drawerItems = new String[]{"Bio", "Vaccination", "Anniversary", "AboutUs"};
+        drawerItems = new ArrayList<>();
+        drawerItems.add(new Drawer("Bio"));
+        drawerItems.add(new Drawer("Vaccination"));
+        drawerItems.add(new Drawer("Anniversary"));
+        drawerItems.add(new Drawer("AboutUs"));
         ab = getSupportActionBar();
 
-        aa = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_activated_1, drawerItems);
+        aa = new DrawerAdapter(this, R.layout.row, drawerItems);
         drawerList.setAdapter(aa);
 
         // Set the list's click listener
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 // Highlight the selected item,
                 //  update the title, and close the drawer
                 drawerList.setItemChecked(position, true);
-                currentTitle = drawerItems[position];
+                currentTitle = drawerItems.get(position).getName();
                 ab.setTitle(currentTitle);
                 drawerLayout.closeDrawer(drawerList);
 
