@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -55,21 +57,38 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 
                 Fragment fragment = null;
-                if (position == 0)
+                if (position == 0){
                     fragment = new BioFragment();
-                else if (position == 1)
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction trans = fm.beginTransaction();
+                    trans.replace(R.id.content_frame, fragment);
+                    trans.commit();
+                }
+
+
+                else if (position == 1){
                     fragment = new VaccinationFragment();
-                else if (position == 2)
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction trans = fm.beginTransaction();
+                    trans.replace(R.id.content_frame, fragment);
+                    trans.commit();
+                }
+
+                else if (position == 2){
                     fragment = new AnniversaryFragment();
-                else if (position == 3)
-                    fragment = new AboutUsFragment();
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction trans = fm.beginTransaction();
+                    trans.replace(R.id.content_frame, fragment);
+                    trans.commit();
+                }
+
+                else if (position == 3){
+                    Intent intent = new Intent(MainActivity.this,AboutUsActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
 
 
-
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction trans = fm.beginTransaction();
-                trans.replace(R.id.content_frame, fragment);
-                trans.commit();
 
                 // Highlight the selected item,
                 //  update the title, and close the drawer
