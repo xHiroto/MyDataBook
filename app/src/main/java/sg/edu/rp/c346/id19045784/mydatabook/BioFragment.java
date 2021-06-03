@@ -27,6 +27,10 @@ public class BioFragment extends Fragment {
 
     Button btnEdit;
     TextView tvBio;
+    SharedPreferences pref;
+    SharedPreferences.Editor prefEdit;
+    SharedPreferences prefs;
+    String text;
 
 
     @Override
@@ -46,6 +50,7 @@ public class BioFragment extends Fragment {
                 LinearLayout ll_alert_layout = new LinearLayout(getActivity());
                 ll_alert_layout.setOrientation(LinearLayout.VERTICAL);
                 final EditText ed_input = new EditText(getActivity());
+                ed_input.setText(tvBio.getText().toString());
                 ll_alert_layout.addView(ed_input);
 
                 myBuilder.setTitle("Edit Bio");
@@ -64,7 +69,8 @@ public class BioFragment extends Fragment {
                 myBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String text = ed_input.getText().toString();
+
+                        text = ed_input.getText().toString();
                         tvBio.setText(text);
                     }
                 });
@@ -79,16 +85,16 @@ public class BioFragment extends Fragment {
     public void onPause(){
         super.onPause();
         String text = tvBio.getText().toString();
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        SharedPreferences.Editor prefEdit = pref.edit();
+        pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        prefEdit = pref.edit();
 
         prefEdit.putString("textBio", text);
         prefEdit.commit();
     }
     public void onResume(){
         super.onResume();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String text = prefs.getString("textBio", "");
+        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        text = prefs.getString("textBio", "");
         tvBio.setText(text);
     }
 

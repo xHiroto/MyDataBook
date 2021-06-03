@@ -48,6 +48,7 @@ public class AnniversaryFragment extends Fragment {
                 LinearLayout ll_alert_layout = new LinearLayout(getActivity());
                 ll_alert_layout.setOrientation(LinearLayout.VERTICAL);
                 final EditText ed_input = new EditText(getActivity());
+                ed_input.setText(tvAnni.getText().toString());
                 ll_alert_layout.addView(ed_input);
 
                 myBuilder.setTitle("Edit Anniversary");
