@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 else if (position == 3){
                     Intent intent = new Intent(MainActivity.this,AboutUsActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                 }
 
