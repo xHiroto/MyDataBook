@@ -101,4 +101,5 @@ public class AnniversaryFragment extends Fragment {
         String text = prefs.getString("textAnni", "");
         tvAnni.setText(text);
     }
+
 }
