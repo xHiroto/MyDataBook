@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     String currentTitle;
     ActionBar ab;
     private ActionBarDrawerToggle drawerToggle;
-    TextView tvAbout;
+    FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         drawerList = findViewById(R.id.left_drawer);
-        tvAbout = findViewById(R.id.tvAbout);
+        fab = findViewById(R.id.fab);
 
         drawerItems = new ArrayList<>();
         drawerItems.add(new Drawer("Bio"));
@@ -126,6 +129,13 @@ public class MainActivity extends AppCompatActivity {
         // Set the drawer toggle as the DrawerListener
         drawerLayout.addDrawerListener(drawerToggle);
         ab.setDisplayHomeAsUpEnabled(true);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(drawerList);
+            }
+        });
     }
 
     @Override
