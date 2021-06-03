@@ -1,5 +1,8 @@
 package sg.edu.rp.c346.id19045784.mydatabook;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +10,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AnniversaryFragment extends Fragment {
+
+    Button btnAnnEdit;
+    TextView tvAnnEdit;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +69,40 @@ public class AnniversaryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_anniversary, container, false);
+        View view = inflater.inflate(R.layout.fragment_anniversary, container, false);
+        btnAnnEdit = view.findViewById(R.id.btnAnnEdit);
+        tvAnnEdit = view.findViewById(R.id.tvAnnData);
+
+        btnAnnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog.Builder myBuilder = new AlertDialog.Builder(getActivity());
+
+
+                LinearLayout ll_alert_layout = new LinearLayout(getActivity());
+                ll_alert_layout.setOrientation(LinearLayout.VERTICAL);
+                final EditText ed_input = new EditText(getActivity());
+                ll_alert_layout.addView(ed_input);
+
+                myBuilder.setTitle("Edit Anniversary");
+                myBuilder.setView(ll_alert_layout);
+                myBuilder.setCancelable(true);
+
+                myBuilder.setNeutralButton("Cancel", null);
+
+                myBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String text = ed_input.getText().toString();
+                        tvAnnEdit.setText(text);
+                    }
+                });
+
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+            }
+        });
+
+        return view;
     }
 }
