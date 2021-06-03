@@ -56,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new VaccinationFragment();
                 else if (position == 2)
                     fragment = new AnniversaryFragment();
-               
+                else if (position == 3)
+                    fragment = new AboutUsFragment();
+
 
 
                 FragmentManager fm = getSupportFragmentManager();
